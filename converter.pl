@@ -5,7 +5,7 @@
 
 while($line = <>){
     
-    #Subset 0:
+    
     $line =~ s?#!.*?#!/usr/bin/perl -w?;
     $line =~ s?echo '(.*)'?print "$1\\n";?; #From subset 3
     $line =~ s?echo (.*)?print "$1\\n";?;
@@ -13,14 +13,13 @@ while($line = <>){
     $line =~ s?\b(.*)\b=(.*)?\$$1 = '$2';?;
     $line =~ s?echo (.*) (.*)?print "$1 $2\\n";?;
 
-    #Subset 1:
+    
     $line =~ s?cd (.*)?chdir '$1';?;
     $line =~ s?'/tmp '?'/tmp'?;
     $line =~ s/read (.*)/\$$1 = <STDIN>; \n    chomp \$$1;/;
     $line =~ s/\bdo\b/{/;
     $line =~ s/done/} /;
 
-    #Subset 2:
 
     if($line =~ m/\$\d+/ ) {
 
