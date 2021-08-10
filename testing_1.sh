@@ -3,7 +3,6 @@
 WA=Perth
 SA=Adelaide
 
-
 if test ! $SA = $WA
 then 
 
